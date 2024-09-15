@@ -13,7 +13,10 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 > If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 ## Here is the demo of this game
-[Click here to watch the demo video](./demo.mp4)
+[Click here to watch the demo video](./demo%20video/demo.mp4)
+
+## The gif version
+![Demo GIF](./demo%20video/demo.gif)
 
 ## Dependency Management
 
