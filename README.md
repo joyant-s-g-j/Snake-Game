@@ -16,7 +16,8 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 [Click here to watch the demo video](./demo%20video/demo.mp4)
 
 ## The gif version
-![Demo GIF](./demo%20video/demo.gif)
+<img src="./demo video/demo.gif" alt="Demo GIF" width="500" height="300"/>
+
 
 ## Dependency Management
 
