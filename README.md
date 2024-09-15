@@ -12,6 +12,8 @@ The workspace contains two folders by default, where:
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
 
 > If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Here is the demo of this game
+[Click here to watch the demo video](./demo.mp4)
 
 ## Dependency Management
 
