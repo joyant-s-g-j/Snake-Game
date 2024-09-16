@@ -3,6 +3,9 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 
 
 public class SnakeGame extends JPanel implements ActionListener, KeyListener{
@@ -108,12 +111,29 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
         return tile_one.x == tile_two.x && tile_one.y == tile_two.y; 
     }
 
+    public void playSound(String soundFile)
+    {
+        try{
+            File file = new File(soundFile);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        }
+        catch(UnsupportedAudioFileException | IOException | LineUnavailableException e) 
+        {
+            e.printStackTrace();
+        }
+        
+    }
+
     public void move()
     {
         if(collision(snakeHead, food))
         {
             snakeBody.add(new Tile(food.x, food.y));
             placeFood();
+            playSound("SnakeSound.wav");
         }
 
         for(int i=snakeBody.size()-1;i>=0; i--)
@@ -141,12 +161,14 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
             if(collision(snakeHead, snakePart))
             {
                 gameOver = true;
+                playSound("gameOverSound.wav");
             }
         }
 
         if(snakeHead.x * tileSize < 0 || snakeHead.x * tileSize > boradWidth || snakeHead.y * tileSize < 0 || snakeHead.y * tileSize > boradHeight)
         {
-            gameOver = true;        
+            gameOver = true;
+            playSound("gameOverSound.wav");        
         }
 
         if(gameOver)
