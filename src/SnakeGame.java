@@ -177,6 +177,18 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
             velocityX = 1;
             velocityY = 0;
         }
+        else if(e.getKeyCode() == KeyEvent.VK_SPACE && gameOver)
+        {
+            snakeHead = new Tile(5, 5);
+            velocityX = 0;
+            velocityY = 0;
+
+            snakeBody.clear();
+            placeFood();
+
+            gameOver = false;
+            gameLoop.start();
+        }
     }
 
     @Override
