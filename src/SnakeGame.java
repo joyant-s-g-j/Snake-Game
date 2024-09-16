@@ -31,6 +31,7 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
     int velocityX;
     int velocityY;
     boolean gameOver = false;
+    int highScore;
 
     SnakeGame(int boradWidth, int boradHeight)
     {
@@ -53,6 +54,8 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
 
         gameLoop = new Timer(100, this);
         gameLoop.start();
+
+        highScore = 0;
     }
 
     public void paintComponent(Graphics g)
@@ -84,11 +87,13 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
         {
             g.setColor(Color.RED);
             g.drawString("Game Over: " + String.valueOf(snakeBody.size()), tileSize - 16, tileSize);
+            g.drawString("High Score : " + String.valueOf(highScore), tileSize + 100, tileSize);
         }
         else
         {
             g.setColor(Color.LIGHT_GRAY);
             g.drawString("Score : " + String.valueOf(snakeBody.size()), tileSize - 16, tileSize);
+            g.drawString("High Score : " + String.valueOf(highScore), tileSize + 70, tileSize);
         }
     }
 
@@ -141,7 +146,16 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener{
 
         if(snakeHead.x * tileSize < 0 || snakeHead.x * tileSize > boradWidth || snakeHead.y * tileSize < 0 || snakeHead.y * tileSize > boradHeight)
         {
-            gameOver = true;
+            gameOver = true;        
+        }
+
+        if(gameOver)
+        {
+            int currentScore = snakeBody.size();
+            if(currentScore > highScore)
+            {
+                highScore = currentScore;
+            }
         }
     }
 
